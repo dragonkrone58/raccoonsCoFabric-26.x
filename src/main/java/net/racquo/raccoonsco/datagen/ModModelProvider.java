@@ -22,7 +22,7 @@ public class ModModelProvider extends FabricModelProvider{
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.LUPINE, ModBlocks.LUPINE_FLOWER_POT, BlockModelGenerators.PlantType.NOT_TINTED );
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.MILKWEED, ModBlocks.MILKWEED_FLOWER_POT, BlockModelGenerators.PlantType.NOT_TINTED );
         blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.SWAMP_GRASS, BlockModelGenerators.PlantType.NOT_TINTED );
-        //N.B. swampy reeds is manual jsonw
+        //N.B. swampy reeds is manual json
     }
 
     @Override

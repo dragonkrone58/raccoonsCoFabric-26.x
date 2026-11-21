@@ -8,6 +8,7 @@ import net.racquo.raccoonsco.block.ModBlocks;
 import net.racquo.raccoonsco.item.ModItems;
 import net.racquo.raccoonsco.item.custom.RaccoonPeltHelmet;
 import net.racquo.raccoonsco.sound.ModSounds;
+import net.racquo.raccoonsco.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +27,7 @@ public class RaccoonsCo implements ModInitializer {
         RaccoonPeltHelmet.register();
         ModBlocks.registerModBlocks();
         ModSounds.registerSounds();
+        ModWorldGeneration.generateModWorldGen();
 
 		LOGGER.info("Hello Fabric world!");
 	}
