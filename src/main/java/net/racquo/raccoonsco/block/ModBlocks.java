@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.racquo.raccoonsco.RaccoonsCo;
+import net.racquo.raccoonsco.block.custom.SwampGrassBlock;
 import net.racquo.raccoonsco.block.custom.SwampyReedsBlock;
 
 import java.awt.*;
@@ -36,7 +37,7 @@ public class ModBlocks {
                     .pushReaction(PushReaction.DESTROY)));
 
     public static final Block SWAMP_GRASS = registerBlock("swamp_grass",
-            properties -> new FlowerBlock(
+            properties -> new SwampGrassBlock(
                     MobEffects.POISON, 4.0f,properties
                     .mapColor(MapColor.COLOR_GREEN)
                     .noCollision()

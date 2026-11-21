@@ -9,7 +9,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.racquo.raccoonsco.sound.ModSounds;
 
 public class SwampyReedsBlock extends DoublePlantBlock {
@@ -18,30 +17,21 @@ public class SwampyReedsBlock extends DoublePlantBlock {
     }
 
     @Override
-    protected void entityInside(
-            BlockState state,
-            Level level,
-            BlockPos pos,
-            Entity entity,
-            net.minecraft.world.entity.InsideBlockEffectApplier handler,
-            boolean bl
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity,
+            net.minecraft.world.entity.InsideBlockEffectApplier handler, boolean bl
     ) {
         super.entityInside(state, level, pos, entity, handler, bl);
 
         // Only trigger for players
         if (entity instanceof Player player) {
 
-            // Only play occasionally, avoiding sound spam
+            // Only play rustling occasionally, when player moves thru grass.
             if (!level.isClientSide()
                     && player.hasMovedHorizontallyRecently()
                     && player.tickCount % 15 == 0) {
 
-                level.playSound(
-                        null,
-                        pos,
-                        ModSounds.REED_RUSTLE,
-                        SoundSource.BLOCKS,
-                        0.3f,
+                level.playSound(null, pos,
+                        ModSounds.REED_RUSTLE, SoundSource.BLOCKS, 0.3f,
                         1.0f + level.getRandom().nextFloat() * 0.2f
                 );
             }

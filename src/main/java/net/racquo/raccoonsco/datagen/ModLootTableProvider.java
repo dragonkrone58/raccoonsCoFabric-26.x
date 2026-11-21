@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -28,8 +29,8 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.LUPINE);
         add(ModBlocks.LUPINE_FLOWER_POT, block -> createPotFlowerItemTable(ModBlocks.LUPINE));
 
-        dropSelf(ModBlocks.SWAMP_GRASS);
-
-
+        add(ModBlocks.SWAMPY_REEDS, createDoublePlantWithSeedDrops(ModBlocks.SWAMPY_REEDS, ModBlocks.SWAMP_GRASS));
+        add(ModBlocks.SWAMP_GRASS, createShearsDispatchTable(ModBlocks.SWAMP_GRASS, LootItem.lootTableItem(Items.WHEAT_SEEDS)
+                .when(LootItemRandomChanceCondition.randomChance(0.3F))));
     }
 }

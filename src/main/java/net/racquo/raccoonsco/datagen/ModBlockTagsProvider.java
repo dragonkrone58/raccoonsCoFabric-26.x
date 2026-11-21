@@ -31,14 +31,6 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
             valueLookupBuilder(BlockTags.FLOWER_POTS).add(block);
             valueLookupBuilder(BlockTags.BEE_ATTRACTIVE).add(block);
         }
-        valueLookupBuilder(BlockTags.SMALL_FLOWERS).add(ModBlocks.MARIGOLD);
-        valueLookupBuilder(BlockTags.FLOWER_POTS).add(ModBlocks.MARIGOLD_FLOWER_POT);
-        valueLookupBuilder(BlockTags.SMALL_FLOWERS).add(ModBlocks.VIOLET);
-        valueLookupBuilder(BlockTags.FLOWER_POTS).add(ModBlocks.VIOLET_FLOWER_POT);
-        valueLookupBuilder(BlockTags.SMALL_FLOWERS).add(ModBlocks.LUPINE);
-        valueLookupBuilder(BlockTags.FLOWER_POTS).add(ModBlocks.LUPINE_FLOWER_POT);
-        valueLookupBuilder(BlockTags.SMALL_FLOWERS).add(ModBlocks.MILKWEED);
-        valueLookupBuilder(BlockTags.FLOWER_POTS).add(ModBlocks.MILKWEED_FLOWER_POT);
 
     }
 }
