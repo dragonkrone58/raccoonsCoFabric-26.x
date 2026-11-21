@@ -2,6 +2,7 @@ package net.racquo.raccoonsco.block;
 
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.racquo.raccoonsco.RaccoonsCo;
+import net.racquo.raccoonsco.block.custom.SwampyReedsBlock;
 
 import java.awt.*;
 import java.util.function.Consumer;
@@ -23,6 +25,15 @@ import java.util.function.Function;
 public class ModBlocks {
 
     //register blocks
+
+    public static final Block SWAMPY_REEDS = registerBlock("swampy_reeds",
+            properties -> new SwampyReedsBlock(properties
+                    .mapColor(MapColor.COLOR_GREEN)
+                    .noCollision()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final Block SWAMP_GRASS = registerBlock("swamp_grass",
             properties -> new FlowerBlock(
