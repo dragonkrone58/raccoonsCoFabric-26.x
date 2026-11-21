@@ -4,7 +4,9 @@ import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.resources.Identifier;
 
+import net.racquo.raccoonsco.block.ModBlocks;
 import net.racquo.raccoonsco.item.ModItems;
+import net.racquo.raccoonsco.item.custom.RaccoonPeltHelmet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,10 +20,10 @@ public class RaccoonsCo implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+
         ModItems.registerModItems();
+        RaccoonPeltHelmet.register();
+        ModBlocks.registerModBlocks();
 
 		LOGGER.info("Hello Fabric world!");
 	}

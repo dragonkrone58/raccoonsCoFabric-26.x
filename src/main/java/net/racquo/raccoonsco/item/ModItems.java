@@ -26,7 +26,7 @@ public class ModItems{
     //Item registers
     public static final Item RACCOON_PELT = registerItem( "raccoon_pelt", Item :: new);
 
-    public static final Item RAW_CRAWFISH = registerItem("cooked_crawfish", properties ->
+    public static final Item RAW_CRAWFISH = registerItem("raw_crawfish", properties ->
             new Item( properties.food(
                     ModFoodComponents.RAW_CRAWFISH_FOOD, ModFoodComponents.RAW_CRAWFISH_CONSUMABLE)));
 
@@ -56,7 +56,7 @@ public class ModItems{
 
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
                 .register(entries -> {
-                    entries.accept(ModItems.RACCOON_PELT);
+                    entries.accept(ModItems.RACCOON_PELT_HELMET);
                 });
 
     }

@@ -19,10 +19,10 @@ public class ModFoodComponents {
 
     //Consumable components
     public static final Consumable RAW_CRAWFISH_CONSUMABLE =
-            Consumables.defaultFood().consumeSeconds(0.8f).onConsume(
+            Consumables.defaultFood().consumeSeconds(1f).onConsume(
                     new ApplyStatusEffectsConsumeEffect(
                             new MobEffectInstance(MobEffects.POISON, 140), 0.8f)).build();
 
     public static final Consumable COOKED_CRAWFISH_CONSUMABLE =
-            Consumables.defaultFood().consumeSeconds(0.8f).build();
+            Consumables.defaultFood().consumeSeconds(1f).build();
 }
