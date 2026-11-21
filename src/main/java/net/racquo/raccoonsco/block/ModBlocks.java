@@ -137,7 +137,7 @@ public class ModBlocks {
             entries.accept(ModBlocks.VIOLET);
             entries.accept(ModBlocks.LUPINE);
             entries.accept(ModBlocks.MILKWEED);
-            //entries.accept(ModBlocks.SWAMPY_REEDS);
+            entries.accept(ModBlocks.SWAMPY_REEDS);
             entries.accept(ModBlocks.SWAMP_GRASS);
         });
     }

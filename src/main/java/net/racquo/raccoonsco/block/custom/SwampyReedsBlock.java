@@ -31,12 +31,9 @@ public class SwampyReedsBlock extends DoublePlantBlock {
         // Only trigger for players
         if (entity instanceof Player player) {
 
-            boolean movingHorizontally =
-                    player.getDeltaMovement().horizontalDistanceSqr() > 0.0001;
-
             // Only play occasionally, avoiding sound spam
             if (!level.isClientSide()
-                    && movingHorizontally
+                    && player.hasMovedHorizontallyRecently()
                     && player.tickCount % 15 == 0) {
 
                 level.playSound(

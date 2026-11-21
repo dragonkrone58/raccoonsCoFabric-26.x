@@ -22,8 +22,7 @@ public class ModModelProvider extends FabricModelProvider{
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.LUPINE, ModBlocks.LUPINE_FLOWER_POT, BlockModelGenerators.PlantType.NOT_TINTED );
         blockModelGenerators.createPlantWithDefaultItem(ModBlocks.MILKWEED, ModBlocks.MILKWEED_FLOWER_POT, BlockModelGenerators.PlantType.NOT_TINTED );
         blockModelGenerators.createCrossBlockWithDefaultItem(ModBlocks.SWAMP_GRASS, BlockModelGenerators.PlantType.NOT_TINTED );
-
-
+        //N.B. swampy reeds is manual jsonw
     }
 
     @Override
@@ -32,6 +31,8 @@ public class ModModelProvider extends FabricModelProvider{
         itemModelGenerators.generateFlatItem(ModItems.RAW_CRAWFISH, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.COOKED_CRAWFISH, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.RACCOON_PELT_HELMET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModBlocks.SWAMPY_REEDS.asItem(), ModelTemplates.FLAT_ITEM);
+
 
     }
 }

@@ -1,0 +1,110 @@
+{
+"raccoon_idle": {
+  "subtitle": "Raccoon Chitters",
+  "sounds": [
+    "raccoonsco:raccoon/raccoon_idle1",
+    "raccoonsco:raccoon/raccoon_idle2",
+    "raccoonsco:raccoon/raccoon_idle4",
+    "raccoonsco:raccoon/raccoon_idle5",
+    "raccoonsco:raccoon/raccoon_idle6"
+  ]
+},
+
+
+
+  "raccoon_hurt": {
+    "subtitle": "Raccoon hurt",
+    "sounds": [
+      "raccoonsco:raccoon/raccoon_hurt1",
+      "raccoonsco:raccoon/raccoon_hurt2",
+      "raccoonsco:raccoon/raccoon_hurt3",
+      "raccoonsco:raccoon/raccoon_hurt4"
+    ]
+  },
+
+  "raccoon_death": {
+    "subtitle": "Raccoon dies",
+    "sounds": [
+      "raccoonsco:raccoon/raccoon_death1",
+      "raccoonsco:raccoon/raccoon_death2"
+    ]
+  },
+
+  "raccoon_eats": {
+    "subtitle": "Raccoon eats",
+    "sounds": [
+      "raccoonsco:raccoon/raccoon_eats1",
+      "raccoonsco:raccoon/raccoon_eats2",
+      "raccoonsco:raccoon/raccoon_eats3"
+    ]
+  },
+  "raccoon_sleeps": {
+    "subtitle": "Raccoon snores",
+    "sounds": [
+      "raccoonsco:raccoon/raccoon_sleeps1",
+      "raccoonsco:raccoon/raccoon_sleeps2",
+      "raccoonsco:raccoon/raccoon_sleeps3",
+      "raccoonsco:raccoon/raccoon_sleeps4",
+      "raccoonsco:raccoon/raccoon_sleeps5"
+    ]
+  },
+
+  "raccoon_sniffs": {
+    "subtitle": "Raccoon sniffs",
+    "sounds": [
+      "raccoonsco:raccoon/raccoon_sniff1",
+      "raccoonsco:raccoon/raccoon_sniff2",
+      "raccoonsco:raccoon/raccoon_sniff3"
+    ]
+  },
+
+  "raccoon_growls": {
+    "subtitle": "Raccoon growls",
+    "sounds": [
+      "raccoonsco:raccoon/raccoon_growl1",
+      "raccoonsco:raccoon/raccoon_growl2",
+      "raccoonsco:raccoon/raccoon_growl3"
+    ]
+  },
+
+  "raccoon_bites": {
+    "subtitle": "Raccoon bites",
+    "sounds": [
+      "raccoonsco:raccoon/raccoon_bite1",
+      "raccoonsco:raccoon/raccoon_bite2",
+      "raccoonsco:raccoon/raccoon_bite3"
+    ]
+  },
+
+  "crawfish_hurt": {
+    "subtitle": "Crawfish is hurt",
+    "sounds": [
+      "raccoonsco:crawfish_hurt1",
+      "raccoonsco:crawfish_hurt2"
+    ]
+  },
+
+  "crawfish_death": {
+    "subtitle": "Crawfish dies",
+    "sounds": [
+      "raccoonsco:crawfish_death"
+    ]
+  },
+  "suspicious_mud_wade": {
+    "subtitle": "Wade Through Mud",
+    "sounds": [
+      "raccoonsco:suspicious_mud_step1",
+      "raccoonsco:suspicious_mud_step2",
+      "raccoonsco:suspicious_mud_step3"
+    ]
+  },
+  "reed_rustle": {
+    "subtitle": "Reeds Rustle",
+    "sounds": [
+      "raccoonsco:reed_rustle1",
+      "raccoonsco:reed_rustle2",
+      "raccoonsco:reed_rustle3",
+      "raccoonsco:reed_rustle4"
+    ]
+  }
+}

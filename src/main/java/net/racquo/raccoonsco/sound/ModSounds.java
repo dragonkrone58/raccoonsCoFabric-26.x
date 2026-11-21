@@ -23,6 +23,7 @@ public class ModSounds {
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier id = Identifier.fromNamespaceAndPath(RaccoonsCo.MOD_ID, name);
+
         return Registry.register(BuiltInRegistries.SOUND_EVENT, id, SoundEvent.createVariableRangeEvent(id));
     }
 
