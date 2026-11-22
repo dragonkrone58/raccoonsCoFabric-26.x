@@ -9,6 +9,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -17,15 +19,17 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
+import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.animal.Bucketable;
-import net.minecraft.world.entity.animal.fish.AbstractFish;
+import net.minecraft.world.entity.animal.fish.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -47,7 +51,7 @@ import org.jetbrains.annotations.Nullable;
  *
  */
 
-public class CrawfishEntity extends AbstractFish implements Bucketable {
+public class CrawfishEntity extends WaterAnimal implements Bucketable {
 
     /* ---------------- DATA TRACKERS ---------------- */
     private static final EntityDataAccessor<@NotNull Boolean> FROM_BUCKET =
@@ -62,8 +66,12 @@ public class CrawfishEntity extends AbstractFish implements Bucketable {
 
     /* ---------------- CONSTRUCTOR ---------------- */
 
-    public CrawfishEntity(EntityType<? extends @NotNull AbstractFish> type, Level world) {
+    public CrawfishEntity(EntityType<? extends @NotNull WaterAnimal> type, Level world) {
         super(type, world);
+        this.moveControl = new SmoothSwimmingMoveControl(
+                this, 85,10,1.2F,0.5F,true
+        );
+
         this.setPathfindingMalus(PathType.WATER, 0.0F);
     }
     /* ---------------- ANIMATION ---------------- */
@@ -103,23 +111,13 @@ public class CrawfishEntity extends AbstractFish implements Bucketable {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new PanicGoal(this, (double)1.25F));
+        this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
+
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.6, 1.4, EntitySelector.NO_SPECTATORS));
-        this.goalSelector.addGoal(4, new FishSwimGoal(this));
+        //this.goalSelector.addGoal(4, new FishSwimGoal(this));
+        this.goalSelector.addGoal(0, new RandomSwimmingGoal(this, 1.3D, 20));
+
     }
-
-    private static class FishSwimGoal extends RandomSwimmingGoal {
-        private final AbstractFish fish;
-
-        public FishSwimGoal(final AbstractFish fish) {
-            super(fish, (double)1.0F, 40);
-            this.fish = fish;
-        }
-
-        public boolean canUse() {
-            return super.canUse();
-        }
-    }
-
 
     /* ---------------- ENTITY ATTRIBUTES ---------------- */
 
@@ -127,7 +125,7 @@ public class CrawfishEntity extends AbstractFish implements Bucketable {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 3.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.20D)
-                .add(Attributes.WATER_MOVEMENT_EFFICIENCY);
+                .add(Attributes.WATER_MOVEMENT_EFFICIENCY, 1.0D);
     }
 
     /* ---------------- DATA TRACKER ---------------- */
@@ -170,8 +168,9 @@ public class CrawfishEntity extends AbstractFish implements Bucketable {
 
     @Override
     protected @NotNull PathNavigation createNavigation(@NotNull Level level) {
-        return new WaterBoundPathNavigation(this, level);
+        return new AmphibiousPathNavigation(this, level);
     }
+
 
     /* ---------------- SOUNDS ---------------- */
 
@@ -245,8 +244,4 @@ public class CrawfishEntity extends AbstractFish implements Bucketable {
         return SoundEvents.BUCKET_FILL;
     }
 
-    @Override
-    protected @NotNull SoundEvent getFlopSound() {
-        return SoundEvents.COD_FLOP;
-    }
 }
