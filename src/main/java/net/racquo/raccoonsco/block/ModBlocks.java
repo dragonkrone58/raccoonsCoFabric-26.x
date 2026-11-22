@@ -124,7 +124,9 @@ public class ModBlocks {
                         .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(RaccoonsCo.MOD_ID, name)))));
     }
 
-
+    public static ResourceKey<Block> getRK(Block block){
+        return BuiltInRegistries.BLOCK.getResourceKey(block).get();
+    }
 
     public static void registerModBlocks() {
         RaccoonsCo.LOGGER.info("Registering Mod Blocks for " + RaccoonsCo.MOD_ID);

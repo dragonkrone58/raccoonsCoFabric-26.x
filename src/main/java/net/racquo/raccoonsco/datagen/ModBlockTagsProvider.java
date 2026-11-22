@@ -24,13 +24,13 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 ModBlocks.VIOLET_FLOWER_POT, ModBlocks.MILKWEED_FLOWER_POT);
 
         for(Block block : MOD_FLOWERS){
-            valueLookupBuilder(BlockTags.SMALL_FLOWERS).add(block);
-            valueLookupBuilder(BlockTags.BEE_ATTRACTIVE).add(block);
+            tag(BlockTags.SMALL_FLOWERS).add(ModBlocks.getRK(block));
+            tag(BlockTags.BEE_ATTRACTIVE).add(ModBlocks.getRK(block));
         }
 
         for(Block block : MOD_FLOWERPOTS){
-            valueLookupBuilder(BlockTags.FLOWER_POTS).add(block);
-            valueLookupBuilder(BlockTags.BEE_ATTRACTIVE).add(block);
+            tag(BlockTags.FLOWER_POTS).add(ModBlocks.getRK(block));
+            tag(BlockTags.BEE_ATTRACTIVE).add(ModBlocks.getRK(block));
         }
 
     }

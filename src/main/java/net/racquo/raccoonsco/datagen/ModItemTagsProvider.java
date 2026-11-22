@@ -17,12 +17,12 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider registries) {
-            valueLookupBuilder(ItemTags.HEAD_ARMOR).add(ModItems.RACCOON_PELT_HELMET);
-            valueLookupBuilder(ItemTags.MAP_INVISIBILITY_EQUIPMENT).add(ModItems.RACCOON_PELT_HELMET);
-            valueLookupBuilder(ItemTags.BEE_FOOD).add(ModBlocks.LUPINE.asItem());
-            valueLookupBuilder(ItemTags.BEE_FOOD).add(ModBlocks.MARIGOLD.asItem());
-            valueLookupBuilder(ItemTags.BEE_FOOD).add(ModBlocks.VIOLET.asItem());
-            valueLookupBuilder(ItemTags.BEE_FOOD).add(ModBlocks.MILKWEED.asItem());
+            tag(ItemTags.HEAD_ARMOR).add(ModItems.getRK(ModItems.RACCOON_PELT_HELMET));
+            tag(ItemTags.MAP_INVISIBILITY_EQUIPMENT).add(ModItems.getRK(ModItems.RACCOON_PELT_HELMET));
+            tag(ItemTags.BEE_FOOD).add(ModItems.getRK(ModBlocks.LUPINE.asItem()));
+            tag(ItemTags.BEE_FOOD).add(ModItems.getRK(ModBlocks.MARIGOLD.asItem()));
+            tag(ItemTags.BEE_FOOD).add(ModItems.getRK(ModBlocks.VIOLET.asItem()));
+            tag(ItemTags.BEE_FOOD).add(ModItems.getRK(ModBlocks.MILKWEED.asItem()));
 
     }
 }
