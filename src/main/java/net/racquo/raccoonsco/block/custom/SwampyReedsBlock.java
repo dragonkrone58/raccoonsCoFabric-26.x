@@ -10,6 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.racquo.raccoonsco.sound.ModSounds;
+import org.jetbrains.annotations.NotNull;
 
 public class SwampyReedsBlock extends DoublePlantBlock {
     public SwampyReedsBlock(Properties properties) {
@@ -17,8 +18,9 @@ public class SwampyReedsBlock extends DoublePlantBlock {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity,
-            net.minecraft.world.entity.InsideBlockEffectApplier handler, boolean bl
+    protected void entityInside(@NotNull BlockState state, @NotNull Level level,
+                                @NotNull BlockPos pos, @NotNull Entity entity,
+                                @NotNull InsideBlockEffectApplier handler, boolean bl
     ) {
         super.entityInside(state, level, pos, entity, handler, bl);
 

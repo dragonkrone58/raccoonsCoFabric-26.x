@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricEntityLootSubProvider;
 
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -26,14 +25,10 @@ public class ModEntityLootProvider extends FabricEntityLootSubProvider {
     @Override
     public void generate() {
 
-        this.add(
-                ModEntities.RACCOON,
-                LootTable.lootTable()
-                        .withPool(
-                                LootPool.lootPool()
-                                        .setRolls(ConstantValue.exactly(1))
-                                        .add(LootItem.lootTableItem(ModItems.RACCOON_PELT))
-                        )
-        );
+        this.add(ModEntities.RACCOON, LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(ModItems.RACCOON_PELT))));
+
+        this.add(ModEntities.CRAWFISH, LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(ModItems.RAW_CRAWFISH))));
     }
 }

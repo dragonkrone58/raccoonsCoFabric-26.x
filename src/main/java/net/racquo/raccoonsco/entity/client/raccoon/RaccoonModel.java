@@ -3,21 +3,18 @@ package net.racquo.raccoonsco.entity.client.raccoon;
 
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.LayerDefinitions;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.racquo.raccoonsco.RaccoonsCo;
+import org.jetbrains.annotations.NotNull;
 
-public class RaccoonModel extends EntityModel<RaccoonRenderState> {
+public class RaccoonModel extends EntityModel<@NotNull RaccoonRenderState> {
     public static final ModelLayerLocation RACCOON =
             new ModelLayerLocation(Identifier.fromNamespaceAndPath(RaccoonsCo.MOD_ID, "raccoon"), "main");
-    private final ModelPart root;
-    private final ModelPart raccoon;
     private final ModelPart head;
 
     private final KeyframeAnimation walkingAnimation;
@@ -33,9 +30,9 @@ public class RaccoonModel extends EntityModel<RaccoonRenderState> {
 
     public RaccoonModel(ModelPart root) {
         super(root);
-        this.root = root.getChild("root");
-        this.raccoon = this.root.getChild("raccoon");
-        this.head = this.raccoon.getChild("head");
+        ModelPart root1 = root.getChild("root");
+        ModelPart raccoon = root1.getChild("raccoon");
+        this.head = raccoon.getChild("head");
         this.walkingAnimation = RaccoonAnimations.ANIM_RACCOON_WALK.bake(root);
         this.idlingAnimation = RaccoonAnimations.ANIM_RACCOON_IDLE.bake(root);
         this.sittingAnimation = RaccoonAnimations.ANIM_RACCOON_SIT.bake(root);

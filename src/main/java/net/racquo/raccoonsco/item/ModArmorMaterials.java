@@ -9,17 +9,15 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.equipment.*;
 import net.racquo.raccoonsco.RaccoonsCo;
 import net.racquo.raccoonsco.util.ModTags;
-
-import java.util.Map;
-
+import org.jetbrains.annotations.NotNull;
 
 public class ModArmorMaterials {
 
 
-    public static final ResourceKey< ? extends Registry<EquipmentAsset>> REGISTRY_KEY =
+    public static final ResourceKey<? extends @NotNull Registry<@NotNull EquipmentAsset>> REGISTRY_KEY =
             ResourceKey.createRegistryKey(Identifier.withDefaultNamespace("equipment_asset"));
 
-    public static final ResourceKey<EquipmentAsset> RACCOON_PELT_KEY =
+    public static final ResourceKey<@NotNull EquipmentAsset> RACCOON_PELT_KEY =
             ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(RaccoonsCo.MOD_ID, "raccoon_pelt"));
 
 

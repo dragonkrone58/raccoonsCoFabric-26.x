@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import org.jetbrains.annotations.NotNull;
 
 public class ModWorldGenProvider extends FabricDynamicRegistryProvider {
 
@@ -27,7 +28,7 @@ public class ModWorldGenProvider extends FabricDynamicRegistryProvider {
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "RaccoonsCo World Generation";
     }
 }

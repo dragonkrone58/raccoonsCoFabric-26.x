@@ -92,7 +92,7 @@ public class RaccoonEntity extends TamableAnimal {
         PANIC
     }
     //ENTITY STATE TRACKER
-    public static final EntityDataAccessor<Integer> DATA_ACTION =
+    public static final EntityDataAccessor<@NotNull Integer> DATA_ACTION =
             SynchedEntityData.defineId(RaccoonEntity.class, EntityDataSerializers.INT);
 
 
@@ -137,7 +137,7 @@ public class RaccoonEntity extends TamableAnimal {
     private static final int FULLNESS_COOLDOWN_TICKS = 20 * 300;
 
     //FULLNESS DATA TRACKER
-    private static final EntityDataAccessor<Integer> DATA_FULLNESS =
+    private static final EntityDataAccessor<@NotNull Integer> DATA_FULLNESS =
             SynchedEntityData.defineId(RaccoonEntity.class, EntityDataSerializers.INT);
 
     private int fullnessCooldownTicks = 0;
@@ -159,7 +159,7 @@ public class RaccoonEntity extends TamableAnimal {
     private static final int MAX_SLEEP_LIGHT = 12;
     private int sleepTicks = 0;
 
-    /* ---------------- TEMPTABLES ---------------- */
+    /* ---------------- TEMPTABLE ---------------- */
     private static final List<ItemLike> RACCOON_EATABLES =
             List.of(ModItems.COOKED_CRAWFISH, ModItems.RAW_CRAWFISH, Items.SWEET_BERRIES, Items.COOKIE, Items.APPLE, Items.MELON_SLICE,
                     Items.GLOW_BERRIES, Items.PUMPKIN_PIE, Items.POTATO, Items.BAKED_POTATO, Items.SALMON, Items.COOKED_SALMON,
@@ -180,12 +180,12 @@ public class RaccoonEntity extends TamableAnimal {
     };
 
     //VARIANT DATA TRACKER
-    private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
+    private static final EntityDataAccessor<@NotNull Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(RaccoonEntity.class, EntityDataSerializers.INT);
 
 
     /* ---------------- CONSTRUCTOR ---------------- */
-    public RaccoonEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
+    public RaccoonEntity(EntityType<? extends @NotNull TamableAnimal> entityType, Level level) {
         super(entityType, level);
         this.setPathfindingMalus(PathType.POWDER_SNOW, -1.0F);
         this.setPathfindingMalus(PathType.ON_TOP_OF_POWDER_SNOW, -1.0F);
@@ -219,6 +219,7 @@ public class RaccoonEntity extends TamableAnimal {
     @Override
     public boolean canAttack(@Nullable LivingEntity target) {
         if (isGrabbing() || isWashing()) return false;
+        assert target != null;
         return super.canAttack(target);
     }
 
@@ -238,8 +239,8 @@ public class RaccoonEntity extends TamableAnimal {
     @Override
     public SpawnGroupData finalizeSpawn(
             ServerLevelAccessor level,
-            DifficultyInstance difficulty,
-            EntitySpawnReason spawnReason,
+            @NotNull DifficultyInstance difficulty,
+            @NotNull EntitySpawnReason spawnReason,
             @Nullable SpawnGroupData entityData
     ) {
         var biomeKey = level.getBiome(this.blockPosition()).unwrapKey().orElse(null);
@@ -251,7 +252,7 @@ public class RaccoonEntity extends TamableAnimal {
 
     /* ---------------- ACTION DATA TRACKER ---------------- */
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
 
         builder.define(DATA_ACTION, RaccoonAction.IDLE.ordinal());
@@ -423,7 +424,7 @@ public class RaccoonEntity extends TamableAnimal {
     /* ---------------- CREATE CHILD ---------------- */
 
     @Override
-    public RaccoonEntity getBreedOffspring(ServerLevel level, AgeableMob partner) {
+    public RaccoonEntity getBreedOffspring(@NotNull ServerLevel level, @NotNull AgeableMob partner) {
         RaccoonEntity baby = ModEntities.RACCOON.create(
                 level,
                 EntitySpawnReason.BREEDING
@@ -431,7 +432,7 @@ public class RaccoonEntity extends TamableAnimal {
 
         if (baby == null) return null;
 
-        ResourceKey<Biome> biomeKey =
+        ResourceKey<@NotNull Biome> biomeKey =
                 level.getBiome(this.blockPosition()).unwrapKey().orElse(null);
 
         baby.setVariant(pickVariant(this.random, biomeKey));
@@ -442,7 +443,7 @@ public class RaccoonEntity extends TamableAnimal {
 
     /* ---------------- INTERACTING WITH RACCOON ---------------- */
     @Override
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+    public @NotNull InteractionResult mobInteract(@NotNull Player player, @NotNull InteractionHand hand) {
 
         if (isSleeping()) return InteractionResult.PASS;
 
@@ -734,7 +735,7 @@ public class RaccoonEntity extends TamableAnimal {
 
 
     @Override
-    public void die(DamageSource source) {
+    public void die(@NotNull DamageSource source) {
         super.die(source);
         dropInventory(); // drop any concrete powder or washed blocks
     }
@@ -1035,7 +1036,7 @@ public class RaccoonEntity extends TamableAnimal {
 
     /* ---------------- WAKE WHEN DAMAGE ---------------- */
     @Override
-    public boolean hurtServer(ServerLevel world, DamageSource source, float amount) {
+    public boolean hurtServer(@NotNull ServerLevel world, @NotNull DamageSource source, float amount) {
         boolean result = super.hurtServer(world, source, amount);
 
         if (result) {
@@ -1107,7 +1108,7 @@ public class RaccoonEntity extends TamableAnimal {
     }
 
     @Nullable @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
+    protected SoundEvent getHurtSound(@NotNull DamageSource source) {
         return ModSounds.RACCOON_HURT;
     }
 
@@ -1132,13 +1133,13 @@ public class RaccoonEntity extends TamableAnimal {
     /* ---------------- VARIANT DATA METHODS ---------------- */
 
     @Override
-    protected void addAdditionalSaveData(ValueOutput output) {
+    protected void addAdditionalSaveData(@NotNull ValueOutput output) {
         super.addAdditionalSaveData(output);
         output.putInt("Variant", this.getTypeVariant());
     }
 
     @Override
-    protected void readAdditionalSaveData(ValueInput input) {
+    protected void readAdditionalSaveData(@NotNull ValueInput input) {
         super.readAdditionalSaveData(input);
         this.getEntityData().set(
                 DATA_ID_TYPE_VARIANT,
@@ -1148,7 +1149,7 @@ public class RaccoonEntity extends TamableAnimal {
 
     /* ---------------- PICK VARIANT METHOD ---------------- */
 
-    private static RaccoonVariant pickVariant(RandomSource random, @Nullable ResourceKey<Biome> biomeKey){
+    private static RaccoonVariant pickVariant(RandomSource random, @Nullable ResourceKey<@NotNull Biome> biomeKey){
         if(random.nextFloat() < 0.02F){return Util.getRandom(RARE_VARIANTS, random);}
 
         if(random.nextFloat() < 0.1F){return Util.getRandom(UNCOMMON_VARIANTS, random);}

@@ -13,24 +13,27 @@ import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.racquo.raccoonsco.block.ModBlocks;
+import org.jetbrains.annotations.NotNull;
 
 public class SwampGrassBlock extends FlowerBlock implements BonemealableBlock {
-    public SwampGrassBlock(Holder<MobEffect> effect, float effectSeconds, Properties properties) {
+    public SwampGrassBlock(Holder<@NotNull MobEffect> effect, float effectSeconds, Properties properties) {
         super(effect, effectSeconds, properties);
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, @NotNull BlockState state) {
         return level.isEmptyBlock(pos.above());
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(@NotNull Level level, @NotNull RandomSource random,
+                                     @NotNull BlockPos pos, @NotNull BlockState state) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(@NotNull ServerLevel level, @NotNull RandomSource random,
+                                @NotNull BlockPos pos, @NotNull BlockState state) {
         DoublePlantBlock.placeAt(level, ModBlocks.SWAMPY_REEDS.defaultBlockState(),
                 pos, Block.UPDATE_ALL);
     }

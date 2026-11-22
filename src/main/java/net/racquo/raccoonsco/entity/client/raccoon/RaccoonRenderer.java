@@ -14,7 +14,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class RaccoonRenderer extends MobRenderer<RaccoonEntity, RaccoonRenderState, RaccoonModel> {
+public class RaccoonRenderer extends MobRenderer<@NotNull RaccoonEntity,
+        @NotNull RaccoonRenderState, @NotNull RaccoonModel> {
 
     private static final Map<RaccoonVariant, Identifier> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(RaccoonVariant.class), map -> {
@@ -74,7 +75,7 @@ public class RaccoonRenderer extends MobRenderer<RaccoonEntity, RaccoonRenderSta
     }
 
     @Override
-    protected void scale(RaccoonRenderState state, PoseStack poseStack) {
+    protected void scale(RaccoonRenderState state, @NotNull PoseStack poseStack) {
         if (state.isBaby) {
             poseStack.scale(0.7f, 0.7f, 0.7f);
         } else {

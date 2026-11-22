@@ -11,28 +11,29 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.racquo.raccoonsco.RaccoonsCo;
 import net.racquo.raccoonsco.block.ModBlocks;
+import org.jetbrains.annotations.NotNull;
 
 public class ModConfiguredFeatures {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MARIGOLD_KEY =
+    public static final ResourceKey<@NotNull ConfiguredFeature<?, ?>> MARIGOLD_KEY =
             registerKey("marigold");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> VIOLET_KEY =
+    public static final ResourceKey<@NotNull ConfiguredFeature<?, ?>> VIOLET_KEY =
             registerKey("violet");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LUPINE_KEY =
+    public static final ResourceKey<@NotNull ConfiguredFeature<?, ?>> LUPINE_KEY =
             registerKey("lupine");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MILKWEED_KEY =
+    public static final ResourceKey<@NotNull ConfiguredFeature<?, ?>> MILKWEED_KEY =
             registerKey("milkweed");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SWAMPY_REEDS_KEY =
+    public static final ResourceKey<@NotNull ConfiguredFeature<?, ?>> SWAMPY_REEDS_KEY =
             registerKey("swampy_reeds");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SWAMP_GRASS_KEY =
+    public static final ResourceKey<@NotNull ConfiguredFeature<?, ?>> SWAMP_GRASS_KEY =
             registerKey("swamp_grass");
 
-    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstrapContext<@NotNull ConfiguredFeature<?, ?>> context) {
 
         register(context, MARIGOLD_KEY,
                 ModBlocks.MARIGOLD.defaultBlockState());
@@ -54,8 +55,8 @@ public class ModConfiguredFeatures {
     }
 
     private static void register(
-            BootstrapContext<ConfiguredFeature<?, ?>> context,
-            ResourceKey<ConfiguredFeature<?, ?>> key,
+            BootstrapContext<@NotNull ConfiguredFeature<?, ?>> context,
+            ResourceKey<@NotNull ConfiguredFeature<?, ?>> key,
             BlockState state
     ) {
         context.register(
@@ -69,7 +70,7 @@ public class ModConfiguredFeatures {
         );
     }
 
-    public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
+    public static ResourceKey<@NotNull ConfiguredFeature<?, ?>> registerKey(String name) {
         return ResourceKey.create(
                 Registries.CONFIGURED_FEATURE,
                 RaccoonsCo.id(name)

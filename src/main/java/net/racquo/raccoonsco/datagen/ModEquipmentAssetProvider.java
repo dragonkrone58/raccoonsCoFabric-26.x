@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.racquo.raccoonsco.RaccoonsCo;
 import net.racquo.raccoonsco.item.ModArmorMaterials;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,14 +25,14 @@ public class ModEquipmentAssetProvider implements DataProvider {
         this.pathProvider = packOutput.createPathProvider(PackOutput.Target.RESOURCE_PACK, "equipment");
     }
 
-    private static void bootstrap(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> consumer) {
+    private static void bootstrap(BiConsumer<ResourceKey<@NotNull EquipmentAsset>, EquipmentClientInfo> consumer) {
         consumer.accept(ModArmorMaterials.RACCOON_PELT_KEY,
                 EquipmentClientInfo.builder().addHumanoidLayers(Identifier.fromNamespaceAndPath(RaccoonsCo.MOD_ID, "raccoon_pelt"))
                         .build());
     }
     @Override
-    public CompletableFuture<?> run(CachedOutput cache) {
-        Map<ResourceKey<EquipmentAsset>, EquipmentClientInfo> equipmentAssets = new HashMap();
+    public @NotNull CompletableFuture<?> run(@NotNull CachedOutput cache) {
+        Map<ResourceKey<@NotNull EquipmentAsset>, EquipmentClientInfo> equipmentAssets = new HashMap<>();
         bootstrap((id, asset) -> {
             if(equipmentAssets.putIfAbsent(id, asset) != null) {
                 throw new IllegalStateException("Tried to register equipment asset twice for id: " + id);
@@ -41,7 +42,7 @@ public class ModEquipmentAssetProvider implements DataProvider {
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "Raccoons Co Equipment Asset Definition";
     }
 }

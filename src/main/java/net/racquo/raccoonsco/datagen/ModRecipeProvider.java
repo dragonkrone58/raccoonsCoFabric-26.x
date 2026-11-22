@@ -13,6 +13,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.racquo.raccoonsco.block.ModBlocks;
 import net.racquo.raccoonsco.item.ModItems;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -23,10 +24,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput output) {
+    protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.@NotNull Provider provider, @NotNull RecipeOutput output) {
         return new RecipeProvider(provider, output){
 
-            List<ItemLike> RAW_CRAWFISH_COOKABLE = List.of(ModItems.RAW_CRAWFISH);
+            final List<ItemLike> RAW_CRAWFISH_COOKABLE = List.of(ModItems.RAW_CRAWFISH);
 
             @Override
             public void buildRecipes(){
@@ -71,7 +72,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "RaccoonsCoModRecipeProvider";
     }
 }

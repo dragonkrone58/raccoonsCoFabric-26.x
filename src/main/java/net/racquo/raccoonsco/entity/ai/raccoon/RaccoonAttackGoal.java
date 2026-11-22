@@ -5,6 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.racquo.raccoonsco.entity.custom.RaccoonEntity;
 import net.racquo.raccoonsco.sound.ModSounds;
+import org.jetbrains.annotations.NotNull;
 
 public class RaccoonAttackGoal extends MeleeAttackGoal {
 
@@ -24,7 +25,7 @@ public class RaccoonAttackGoal extends MeleeAttackGoal {
     }
 
     @Override
-    protected void checkAndPerformAttack(LivingEntity target) {
+    protected void checkAndPerformAttack(@NotNull LivingEntity target) {
         if (this.canPerformAttack(target)) {
             this.resetAttackCooldown();
             this.mob.doHurtTarget(getServerLevel(this.mob), target);

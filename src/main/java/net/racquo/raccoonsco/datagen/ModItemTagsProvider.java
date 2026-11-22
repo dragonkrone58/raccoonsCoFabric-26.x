@@ -6,7 +6,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.racquo.raccoonsco.block.ModBlocks;
 import net.racquo.raccoonsco.item.ModItems;
-import net.racquo.raccoonsco.util.ModTags;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;

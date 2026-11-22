@@ -34,7 +34,7 @@ public class RaccoonEatFoodGoal extends Goal {
 
         if (items.isEmpty()) return false;
 
-        targetFood = items.get(0);
+        targetFood = items.getFirst();
         return true;
     }
 

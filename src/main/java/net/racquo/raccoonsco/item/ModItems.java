@@ -6,10 +6,13 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.MobBucketItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.material.Fluids;
 import net.racquo.raccoonsco.RaccoonsCo;
 import net.racquo.raccoonsco.entity.ModEntities;
 
@@ -43,6 +46,12 @@ public class ModItems{
     public static final Item RACCOON_SPAWN_EGG = registerItem("raccoon_spawn_egg",
             setting-> new SpawnEggItem(setting.spawnEgg(ModEntities.RACCOON)));
 
+    public static final Item CRAWFISH_SPAWN_EGG = registerItem("crawfish_spawn_egg",
+            setting-> new SpawnEggItem(setting.spawnEgg(ModEntities.CRAWFISH)));
+
+    public static final Item CRAWFISH_BUCKET = registerItem("crawfish_bucket",
+            setting->new MobBucketItem(ModEntities.CRAWFISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, setting));
+
 
     //register all items
     public static void registerModItems(){
@@ -69,6 +78,12 @@ public class ModItems{
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS)
                 .register(entries -> {
                     entries.accept(ModItems.RACCOON_SPAWN_EGG);
+                    entries.accept(ModItems.CRAWFISH_SPAWN_EGG);
+                });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+                .register(entries -> {
+                    entries.accept(ModItems.CRAWFISH_BUCKET);
                 });
 
     }

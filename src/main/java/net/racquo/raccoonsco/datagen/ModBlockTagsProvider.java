@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.racquo.raccoonsco.block.ModBlocks;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -15,7 +16,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         super(output, registryLookupFuture);
     }
     @Override
-    protected void addTags(HolderLookup.Provider registries) {
+    protected void addTags(HolderLookup.@NotNull Provider registries) {
 
         List<Block> MOD_FLOWERS = List.of(ModBlocks.MARIGOLD, ModBlocks.LUPINE, ModBlocks.VIOLET, ModBlocks.MILKWEED);
 

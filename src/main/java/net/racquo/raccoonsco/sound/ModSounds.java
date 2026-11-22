@@ -2,7 +2,6 @@ package net.racquo.raccoonsco.sound;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.racquo.raccoonsco.RaccoonsCo;

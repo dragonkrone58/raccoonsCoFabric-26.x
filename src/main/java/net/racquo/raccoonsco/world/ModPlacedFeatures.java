@@ -8,41 +8,38 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.racquo.raccoonsco.RaccoonsCo;
+import org.jetbrains.annotations.NotNull;
 
 public class ModPlacedFeatures {
 
-    public static final ResourceKey<PlacedFeature> MARIGOLD_PLACED_KEY =
+    public static final ResourceKey<@NotNull PlacedFeature> MARIGOLD_PLACED_KEY =
             registerKey("marigold_placed");
 
-    public static final ResourceKey<PlacedFeature> VIOLET_PLACED_KEY =
+    public static final ResourceKey<@NotNull PlacedFeature> VIOLET_PLACED_KEY =
             registerKey("violet_placed");
 
-    public static final ResourceKey<PlacedFeature> LUPINE_PLACED_KEY =
+    public static final ResourceKey<@NotNull PlacedFeature> LUPINE_PLACED_KEY =
             registerKey("lupine_placed");
 
-    public static final ResourceKey<PlacedFeature> MILKWEED_PLACED_KEY =
+    public static final ResourceKey<@NotNull PlacedFeature> MILKWEED_PLACED_KEY =
             registerKey("milkweed_placed");
 
-    public static final ResourceKey<PlacedFeature> SWAMPY_REEDS_PLACED_KEY =
+    public static final ResourceKey<@NotNull PlacedFeature> SWAMPY_REEDS_PLACED_KEY =
             registerKey("swampy_reeds_placed");
 
-    public static final ResourceKey<PlacedFeature> SWAMP_GRASS_PLACED_KEY =
+    public static final ResourceKey<@NotNull PlacedFeature> SWAMP_GRASS_PLACED_KEY =
             registerKey("swamp_grass_placed");
 
 
-    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstrapContext<@NotNull PlacedFeature> context) {
 
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures =
+        HolderGetter<@NotNull ConfiguredFeature<?, ?>> configuredFeatures =
                 context.lookup(Registries.CONFIGURED_FEATURE);
 
         // Marigold
@@ -133,7 +130,7 @@ public class ModPlacedFeatures {
         );
     }
 
-    public static ResourceKey<PlacedFeature> registerKey(String name) {
+    public static ResourceKey<@NotNull PlacedFeature> registerKey(String name) {
         return ResourceKey.create(
                 Registries.PLACED_FEATURE,
                 RaccoonsCo.id(name)
@@ -141,9 +138,9 @@ public class ModPlacedFeatures {
     }
 
     private static void register(
-            BootstrapContext<PlacedFeature> context,
-            ResourceKey<PlacedFeature> key,
-            net.minecraft.core.Holder<ConfiguredFeature<?, ?>> configuredFeature,
+            BootstrapContext<@NotNull PlacedFeature> context,
+            ResourceKey<@NotNull PlacedFeature> key,
+            net.minecraft.core.Holder<@NotNull ConfiguredFeature<?, ?>> configuredFeature,
             PlacementModifier... modifiers
     ) {
         context.register(

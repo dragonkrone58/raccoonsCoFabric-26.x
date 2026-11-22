@@ -31,9 +31,13 @@ public class ModModelProvider extends FabricModelProvider{
         itemModelGenerators.generateFlatItem(ModItems.RAW_CRAWFISH, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.COOKED_CRAWFISH, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.RACCOON_PELT_HELMET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CRAWFISH_BUCKET, ModelTemplates.FLAT_ITEM);
+
         itemModelGenerators.generateFlatItem(ModBlocks.SWAMPY_REEDS.asItem(), ModelTemplates.FLAT_ITEM);
 
         itemModelGenerators.generateFlatItem(ModItems.RACCOON_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CRAWFISH_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+
 
 
 
