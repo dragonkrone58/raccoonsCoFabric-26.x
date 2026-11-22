@@ -47,26 +47,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .save(output);
 
                 //marigold to orange dye recipe
-                shapeless(RecipeCategory.MISC, Items.ORANGE_DYE, 1)
+                shapeless(RecipeCategory.MISC, Items.DYE.orange(), 1)
                         .requires(ModBlocks.MARIGOLD)
-                        .unlockedBy(getHasName(ModBlocks.MARIGOLD), has(Items.ORANGE_DYE))
+                        .unlockedBy(getHasName(ModBlocks.MARIGOLD), has(Items.DYE.orange()))
                         .save(output);
 
                 //violet to purple dye recipe
-                shapeless(RecipeCategory.MISC, Items.PURPLE_DYE, 1)
+                shapeless(RecipeCategory.MISC, Items.DYE.purple(), 1)
                         .requires(ModBlocks.VIOLET)
-                        .unlockedBy(getHasName(ModBlocks.VIOLET), has(Items.PURPLE_DYE))
+                        .unlockedBy(getHasName(ModBlocks.VIOLET), has(Items.DYE.purple()))
                         .save(output);
 
                 //lupine to magenta dye recipe
-                shapeless(RecipeCategory.MISC, Items.MAGENTA_DYE, 1)
+                shapeless(RecipeCategory.MISC, Items.DYE.magenta(), 1)
                         .requires(ModBlocks.LUPINE)
-                        .unlockedBy(getHasName(ModBlocks.LUPINE), has(Items.MAGENTA_DYE))
+                        .unlockedBy(getHasName(ModBlocks.LUPINE), has(Items.DYE.magenta()))
                         .save(output);
 
-                shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1)
+                shapeless(RecipeCategory.MISC, Items.DYE.pink(), 1)
                         .requires(ModBlocks.MILKWEED)
-                        .unlockedBy(getHasName(ModBlocks.MILKWEED), has(Items.PINK_DYE))
+                        .unlockedBy(getHasName(ModBlocks.MILKWEED), has(Items.DYE.pink()))
                         .save(output);            }
         };
     }
