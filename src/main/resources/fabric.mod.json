@@ -18,6 +18,9 @@
 		"main": [
 			"net.racquo.raccoonsco.RaccoonsCo"
 		],
+        "client": [
+          "net.racquo.raccoonsco.RaccoonsCoClient"
+        ],
 		"fabric-datagen": [
 			"net.racquo.raccoonsco.RaccoonsCoDataGenerator"
 		]

@@ -33,6 +33,9 @@ public class ModModelProvider extends FabricModelProvider{
         itemModelGenerators.generateFlatItem(ModItems.RACCOON_PELT_HELMET, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModBlocks.SWAMPY_REEDS.asItem(), ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerators.generateFlatItem(ModItems.RACCOON_SPAWN_EGG, ModelTemplates.FLAT_ITEM);
+
+
 
     }
 }

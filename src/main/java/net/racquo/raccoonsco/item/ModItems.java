@@ -8,8 +8,10 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.racquo.raccoonsco.RaccoonsCo;
+import net.racquo.raccoonsco.entity.ModEntities;
 
 import java.util.function.Function;
 
@@ -37,6 +39,11 @@ public class ModItems{
     public static final Item RACCOON_PELT_HELMET = registerItem("raccoon_pelt_helmet",
             properties -> new Item( properties.humanoidArmor(ModArmorMaterials.RACCOON_PELT_ARMOR_MATERIAL, ArmorType.HELMET)));
 
+
+    public static final Item RACCOON_SPAWN_EGG = registerItem("raccoon_spawn_egg",
+            setting-> new SpawnEggItem(setting.spawnEgg(ModEntities.RACCOON)));
+
+
     //register all items
     public static void registerModItems(){
 
@@ -57,6 +64,11 @@ public class ModItems{
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT)
                 .register(entries -> {
                     entries.accept(ModItems.RACCOON_PELT_HELMET);
+                });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS)
+                .register(entries -> {
+                    entries.accept(ModItems.RACCOON_SPAWN_EGG);
                 });
 
     }

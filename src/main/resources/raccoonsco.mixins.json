@@ -3,7 +3,7 @@
 	"package": "net.racquo.raccoonsco.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-		"ExampleMixin"
+		"ConcretePowderAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

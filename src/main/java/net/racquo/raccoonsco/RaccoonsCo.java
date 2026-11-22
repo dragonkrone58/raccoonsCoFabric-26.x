@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
 
 import net.racquo.raccoonsco.block.ModBlocks;
+import net.racquo.raccoonsco.entity.ModEntities;
 import net.racquo.raccoonsco.item.ModItems;
 import net.racquo.raccoonsco.item.custom.RaccoonPeltHelmet;
 import net.racquo.raccoonsco.sound.ModSounds;
@@ -28,6 +29,7 @@ public class RaccoonsCo implements ModInitializer {
         ModBlocks.registerModBlocks();
         ModSounds.registerSounds();
         ModWorldGeneration.generateModWorldGen();
+        ModEntities.registerModEntities();
 
 		LOGGER.info("Hello Fabric world!");
 	}
